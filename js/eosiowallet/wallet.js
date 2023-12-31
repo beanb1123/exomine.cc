@@ -16,7 +16,7 @@ var func_logout         = null;
 //var chainID = "1064487b3cd1a897ce03ae5b6a865651747e2e152090f99c1d19d44e01aea5a4"; // wax mainnet
 var chainID = "1064487b3cd1a897ce03ae5b6a865651747e2e152090f99c1d19d44e01aea5a4"; // wax testnet
 // wax
-var wax = null;
+var wax = require('../wax/waxjs.js');
 
 // --
 // Node-selection
