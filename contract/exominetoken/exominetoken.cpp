@@ -12,7 +12,13 @@ void token::mine( const name& miner ) {
 
     accounts from_acnts( get_self(), miner.value );
 
-    const auto& from = from_acnts.get( symbol_code("EXO").raw(), "Please \"OPEN\" EXO token on the \"MINER\" account before start mining EXO Token." );
+    const auto& chk = from_acnts.find( symbol_code("EXO").raw() );
+
+    if(chk == from_acnts.end()) { 
+        from_acnts.emplace( miner, [&]( auto& a ){
+        a.balance = asset{0, symbol("EXO", 8)};
+      });
+    }
 
     const auto last = _last.find(miner.value);
 
