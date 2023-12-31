@@ -14,7 +14,7 @@ var func_logout         = null;
 //var chainID = "aca376f206b8fc25a6ed44dbdc66547c36c6c33e3a119ffbeaef943642f0e906"; // EOS Mainnet
 //var chainID = "2a02a0053e5a8cf73a56ba0fda11e4d92e0238a4a2aa74fccf46d5a910746840"; // Jungle3
 //var chainID = "1064487b3cd1a897ce03ae5b6a865651747e2e152090f99c1d19d44e01aea5a4"; // wax mainnet
-var chainID = "f16b1833c747c43682f4386fca9cbb327929334a762755ebec17f6f23c9b8a12"; // wax testnet
+var chainID = "1064487b3cd1a897ce03ae5b6a865651747e2e152090f99c1d19d44e01aea5a4"; // wax testnet
 // wax
 var wax = null;
 
@@ -24,7 +24,7 @@ var wax = null;
 //var   thenode      = "eos.api.eosnation.io"; // best eos
 //var   thenode      = "wax.greymass.com"; // wax mainnet
 
-var thenode = "api.waxtest.alohaeos.com"; // wax testnet (with debugoutput)
+var thenode = "wax-api.alcor.exchange"; // wax testnet (with debugoutput)
 //var   thenode      = "jungle3.greymass.com"; // 
 //var   thenode      = "jungle3.cryptolions.io"; // 
 // https://jungle4.cryptolions.io/v2/docs/
