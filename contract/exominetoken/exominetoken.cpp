@@ -10,6 +10,10 @@ void token::mine( const name& miner ) {
     positions_t _table("swap.alcor"_n, uint64_t(1230));
     last_table _last("exominetoken"_n, "exominetoken"_n.value);
 
+    accounts from_acnts( get_self(), miner.value );
+
+    const auto& from = from_acnts.get( symbol_code("EXO").raw(), "Please open EXO token before start mining" );
+
     const auto last = _last.find(miner.value);
 
     const uint32_t now = eosio::current_time_point().sec_since_epoch();
