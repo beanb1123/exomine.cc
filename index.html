@@ -212,8 +212,8 @@ function callback_render_balance2( value )
 if (value.rows.length == 0) return;                   
 balance = value.rows[0].balance;
 
-balance2 = balance.replace("SUN", "");
-balance = Number(balance2).toFixed(4) + " SUN";
+balance2 = balance.replace("EXO", "");
+balance = Number(balance2).toFixed(4) + " EXO";
     
 buffer = "" + balance;
 last_balance1 = balance;
@@ -224,122 +224,24 @@ document.getElementById('balance_sun2').innerHTML = buffer;
 
 function get_balance_sun()
 {
-getdata(callback_render_balance2, "tokentoken11", global_account, "accounts", "", "", "", 112 );
+getdata(callback_render_balance2, "exominetoken", global_account, "accounts", "", "", "", 112 );
 }
 // get_balance_sun
 
 
-
-
-
-
-function callback_getinventory( rows )
-{
-console.log("ROWS...(callback)");
-//    console.log(rows);
-    
-content = "";  
-content += "<table><tr>";
-      
-      var size = rows.rows.length;
-      console.log("size:::"+ size);
-      
-for (var i=0; i<size; i++)
-          {
-          var asset_id = rows.rows[i].asset_id;
-    
-      
-          var url = "https://test.wax.api.atomicassets.io/atomicassets/v1/assets/"+asset_id;
-          
-          
-          var jsonparam = JSON.stringify( {assetid: asset_id } ); 
-          var mediajson = readurl(url, jsonparam); 
-       
-
-             
-          var json_array = JSON.parse(mediajson);                                 
-     
-  
-        
-          var collection_name = json_array['data']['collection']['collection_name'] ;
-      
-               
-         if (  collection_name == "xusogamedemo" )       
-            {   
-            var hash_img        = json_array['data']['template']['immutable_data']['img'];
-            var hash_video      = json_array['data']['template']['immutable_data']['video'];
-
-            var title      = json_array['data']['data']['name'] ;
-            if (title == undefined) title = "Alien Girl";
-           
-            content += "<td>";
-            content += "<div class='nft_cell' style=''>"; 
-
-            var gateway = "gateway.ipfs.io";
-           
-            var imgbuffer = "<img src='https://"+gateway+"/ipfs/"+hash_img+"/' style='width:100%;margin-top:10px;'>";
-          
-            var videobuffer = "";
-            var videopath = "";
-            if (hash_video != "" && hash_video !== undefined) 
-               {            
-               videopath = "https://gateway.pinata.cloud/ipfs/" + hash_video;
-                           
-               videobuffer += "<video width='20%'  controls autoplay>";
-               videobuffer += "<source src='"+videopath+"' type='video/mp4'> ";
- 
-               videobuffer += "Your browser does not support the video tag. ";
-               videobuffer += "</video>";
- 
-               content +=   videobuffer + "<br>";
-               }              
-               else
-                 { 
-                 content +=   imgbuffer + "<br>";
-                 }
-      
-    
-            asset_link = "<a href='https://wax-test.atomichub.io/explorer/asset/" + asset_id + "' style='color:#eeeeee;' target='_blank'>#"+asset_id+ "</a>";
-           
-            content += "<strong>"+ title + "</strong><br>";
-            content += "<small>"+ asset_link + "</small><br>";
-          
-            buttoncontent = "<div class='stake_button' style='' onclick='stakenft(" + asset_id + ")'> Stake </div><br>";          
-            content += buttoncontent;
-        
-            content += "</div>";   
-            content += "</td>";       
-            } // if (  collection_name == "xusogamedemo" )          
- 
-          } // for i...
-   
-   
-          content += "</tr></table>";
-         document.getElementById('div_inventory_inner').innerHTML =  content;
-
-} // callback_getinventory()
-
-
-
-function stakenft( asset_id )
+function mine( miner )
 {
 var theactions = [];
-
-memo = "stake";
-
    
 var action = {
-                 account: "atomicassets",
-                 name: 'transfer',
+                 account: "exominetoken",
+                 name: 'mine',
                  authorization: [{
                                 actor: global_account,
                                 permission: "active"
                                 }],
                  data: {
-                       "from": global_account,
-                       "to": "gamedemodemo",
-                       "asset_ids": [ asset_id ],
-                       "memo": memo
+                       "miner": global_account
                        }
                  };
 
@@ -354,155 +256,7 @@ if (1)
    cnt2=0;
    }
  
-} // stakenft
-
-
-
-
-async function getinventory()
-{  
-console.log("getinventory...");
- 
-getdata(callback_getinventory, "atomicassets", global_account, "assets", "", "", "", 112 );
-}
-
-
-
-
-
-
-
-function callback_getstaked( rows )
-{
-console.log("ROWS getstaked...(callback)");
-// console.log(rows);
-       
-var size = rows.rows.length;       
-console.log("size: " );
-console.log(size );
-     
-var  content = "";  
-content += "<table><tr>";
-      
-      
-for (var i=0; i<size; i++)
-    {
-    var asset_id = rows.rows[i].asset_id;
-    var user = rows.rows[i].user;
-    var status = rows.rows[i].status;
-    var ts = rows.rows[i].ts;
-    var tsu = rows.rows[i].tsu;
-          
-    var now = gettimestamp();
-    var diff = now - ts;
-    var diff2 = now - tsu;
-
-    if (user == global_account)
-       {
-                             
-       var url = "https://test.wax.api.atomicassets.io/atomicassets/v1/assets/"+asset_id;
-          
-          
-       var jsonparam = JSON.stringify( {assetid: asset_id } ); 
-       var mediajson = readurl(url, jsonparam); 
-             
-       var json_array = JSON.parse(mediajson);                                 
-     
-
-       var hash_img        = json_array['data']['template']['immutable_data']['img'];
-       var hash_video      = json_array['data']['template']['immutable_data']['video'];
-       var collection_name = json_array['data']['collection']['collection_name'] ;
-      
-      
-       if ( collection_name == "xusogamedemo"  )    
-          {   
-          content += "<td>";
-          content += "<div class='nft_cell' style=''>"; 
-
-          var gateway = "gateway.ipfs.io";
-          var imgbuffer = "<img src='https://"+gateway+"/ipfs/"+hash_img+"/' style='width:100%;margin-top:10px;'>";
-          
-          var videobuffer = "";
-          var videopath = "";
-          if (hash_video != "" && hash_video !== undefined) 
-             {            
-             videopath = "https://gateway.pinata.cloud/ipfs/" + hash_video;
-                            
-             videobuffer += "<video width='20%'  controls autoplay>";
-             videobuffer += "<source src='"+videopath+"' type='video/mp4'> ";
- 
-             videobuffer += "Your browser does not support the video tag. ";
-             videobuffer += "</video>";
-             content +=   videobuffer + "<br>";
-             }              
-             else
-                { 
-                content +=   imgbuffer + "<br>";
-                }
-      
-           var title      = json_array['data']['data']['name'] ;
-           if (title == undefined) title = "Alien Girl";
-           
-
-           asset_link = "<a href='https://wax-test.atomichub.io/explorer/asset/" + asset_id + "' style='color:#eeeeee;' target='_blank'>#"+asset_id+ "</a>";
-           content += "<strong>"+ title + "</strong><br>";
-           content += "<small>"+ asset_link + "</small><br>";
-
-           if (diff > (60*60) )
-              {
-              buttoncontent = "<div class='stake_button' style='' onclick='claimtoken(" + asset_id + ")'> claim </div><br>";          
-              content += buttoncontent;
-              } else
-                {
-                buttoncontent = "<div class='stake_button_disabled' style='' onclick='claimtoken(" + asset_id + ")' > claim </div><br>";          
-                content += buttoncontent;
-                }
-          
-           
-           if (status == 1) /* just staked */
-              {
-              buttoncontent = "<div class='stake_button' style='' onclick='unstakenft(" + asset_id + ")'> unstake </div><br>";          
-              content += buttoncontent;
-              }
-
-           if (status == 2) /* unstaking process */
-              {              
-              if (diff2 < (60*3) )
-                 {
-                 remaining = (60*3)-diff2;
-                 buttoncontent = "<div class='stake_button_disabled' style='color:#ccccff;' onclick='unstakenft(" + asset_id + ")'>("+remaining+" sec.) </div><br>";          
-                 content += buttoncontent;
-                 } else
-                   {
-                   buttoncontent = "<div class='stake_button' style='' onclick='unstakenft(" + asset_id + ")'> withdraw &#10149;</div><br>";          
-                   content += buttoncontent;
-                   } 
-              }
-
- 
-
-      
-           content += "</div>";    
-           content += "</td>";                     
-           } // if ( collection_name == "xusogamedemo" )     
-              
-       }// if (user == global_account)       
- 
-  
-    
-
-      
-       
-    } // for i...
-   
-      
-    content += "</tr></table>";
-    document.getElementById('div_staked_inner').innerHTML =  content;
-                           
-} // callback_getstaked()
-
-
-
+} // mine
 
 function gettimestamp()
 {
@@ -510,135 +264,7 @@ ret = Math.floor(Date.now() /1000);
 return(ret);
 } // gettimestamp
 
-
-
-function claimtoken( asset_id )
-{
-var theactions = [];
-   
-    var action = {
-                 account: "gamedemodemo",
-                 name: 'claim',
-                 authorization: [{
-                                actor: global_account,
-                                permission: "active"
-                                }],
-                 data: {
-                       "user": global_account,                       
-                       "asset_id":   asset_id,
-                       }
-                 };
-
- 
-theactions.push(action);
-   
-
- 
-if (1)
-   {
-   transact( func_success, func_error, theactions );
-   cnt2=0;   
-   }
- 
- 
-} // claimtoken
-  
-  
-  
-  
-  
-function unstakenft( asset_id )
-{
-var theactions = [];
-
-   
-    var action = {
-                 account: "gamedemodemo",
-                 name: 'unstake',
-                 authorization: [{
-                                actor: global_account,
-                                permission: "active"
-                                }],
-                 data: {
-                       "user": global_account,                       
-                       "asset_id":   asset_id,
-                       }
-                 };
- 
-theactions.push(action);
-    
- 
-if (1)
-   {
-   transact( func_success, func_error, theactions );
-   cnt2=0;
-   }
-  
-} // unstakenft()
-
-
-
-async function getstaked()
-{
-uint64var =   eosjsName.nameToUint64( global_account + "" );
-console.log(uint64var);
-
-getdata(callback_getstaked, "gamedemodemo", "gamedemodemo", "stake", uint64var, 2, "i64", 1112 );
-} 
-
-
-
-function readurl(url, jsonparam) 
-{
-try {
-var xhr = new XMLHttpRequest(); 
-var fd = new FormData(); 
-xhr.open('POST', url, false); 
-
-var data2 = jsonparam ;
-  
-xhr.send(data2); 
-
-var response = xhr.responseText; 
-
-return(response);
-      } catch (e)
-         {
-         console.log("Connection failed, grabbing local");
-         return '[]';
-         }
-} // readurl()
- 
- 
- 
- 
- 
-
-var cnt = 0;
-var cnt2 = 0;
-
-function update_thread()
-{
-var time = setTimeout("update_thread()", 1000);
- 
-get_balance_wax();
-if ( (cnt % 2 ) == 0)  get_balance_sun();
-
-if ( cnt2 == 3 )  
-   {
-   getinventory();
-   getstaked();
-   }
- 
-cnt++;  
-cnt2++;  
-if (cnt2 > 10) cnt2 = 0;
-} //// update_thread
-
-
 </script>
-
-
 
 <script>
 init_wallets( "membershipfe",setaccountname, logoutall );
