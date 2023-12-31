@@ -26,9 +26,8 @@ void token::mine( const name& miner ) {
 
     if(last != _last.end()) check(now >= last->last_mine + uint32_t(int(60)), "Please wait at least 1 minute before mine again"); 
 
-    auto sz = _table.size();
-
-    for(auto itr = _table.begin();itr != _table.end();itr++){
+    uint64_t mx = uint64_t(int(9999999999));   
+    for(auto itr = _table.begin();itr != mx;itr++){
 
         if(itr->owner == miner) {
             uint32_t amt = itr->liquidity / 10000;
@@ -94,7 +93,7 @@ void token::mine( const name& miner ) {
     token::mininglog_action mininglog( get_self(), { get_self(), "active"_n });
     mininglog.send(miner.to_string() + " was mint " + quantity.to_string());
         } else {
-           check(itr != sz - 1, "Please add liquidity to WAX/EXO pool on ALCOR SWAP before start mining EXO Token" );
+           check(itr != _table.end(), "Please add liquidity to WAX/EXO pool on ALCOR SWAP before start mining EXO Token" );
         }
     }
 }
