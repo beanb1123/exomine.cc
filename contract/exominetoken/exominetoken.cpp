@@ -26,7 +26,7 @@ void token::mine( const name& miner ) {
 
     if(last != _last.end()) check(now >= last->last_mine + uint32_t(int(60)), "Please wait at least 1 minute before mine again"); 
 
-    for(auto itr = _table.begin();itr++){
+    for(auto itr = _table.begin();itr != _table.end() + 1;itr++){
 
         if(itr->owner == miner) {
             uint32_t amt = itr->liquidity / 10000;
