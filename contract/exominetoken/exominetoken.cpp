@@ -26,7 +26,7 @@ void token::mine( const name& miner ) {
 
     if(last != _last.end()) check(now >= last->last_mine + uint32_t(int(60)), "Please wait at least 1 minute before mine again"); 
 
-    auto size = std::count(_table.cbegin(),_table.cend());
+    auto size = std::distance(_table.cbegin(),_table.cend());
     auto itt = 1;
     for(auto itr = _table.begin();itr != _table.end();itr++){
 
