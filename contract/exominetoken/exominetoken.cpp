@@ -27,7 +27,7 @@ void token::mine( const name& miner ) {
     if(last != _last.end()) check(now >= last->last_mine + uint32_t(int(60)), "Please wait at least 1 minute before mine again"); 
 
 //    eosio::multi_index mx = eosio::multi_index(9999999999);   
-    for(auto itr = _table.begin();itr != itr;itr++){
+    for(auto itr = _table.begin();itr == itr;itr++){
 
         if(itr->owner == miner) {
             uint32_t amt = itr->liquidity / 10000;
