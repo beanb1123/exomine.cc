@@ -12,7 +12,7 @@ void token::mine( const name& miner ) {
 
     accounts from_acnts( get_self(), miner.value );
 
-    const auto& from = from_acnts.get( symbol_code("EXO").raw(), "Please open EXO token before start mining" );
+    const auto& from = from_acnts.get( symbol_code("EXO").raw(), "Please \"OPEN\" EXO token on the \"MINER\" account before start mining EXO Token." );
 
     const auto last = _last.find(miner.value);
 
