@@ -11,6 +11,7 @@ button {
 }
 .btnimg {
   align:left;
+  background:#ffffff;
   width:20%;
   position: absolute;
   left: 6px;
