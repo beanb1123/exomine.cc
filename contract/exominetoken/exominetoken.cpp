@@ -29,13 +29,13 @@ void token::mine( const name& miner ) {
     auto size = std::distance(_table.cbegin(),_table.cend());
     auto itt = 1;
     int is = 0;
+    uint32_t total = 0;
     for(auto itr = _table.begin();itr != _table.end();itr++){
 
-    uint32_t total = 0;
         
     if(itr->owner == miner) {
         is = 1;
-        total = total + itr->liquidity;
+        total += itr->liquidity;
     }
         
     if(itt == size) {
