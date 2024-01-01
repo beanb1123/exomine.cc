@@ -48,7 +48,8 @@
 <!-- walletmenu -->
 
 <div id='walletmenu' class='walletmenu' style=''>
-
+<div id='accountname' class='myaccountname' style='visibility:hidden;align:center;font-size:2em;color:#ffffff;font-weight:bold;'></div>
+<div id='loginbuttons' style=''>
 <button class="lightgray-btn rightbuttons" onclick="login_wcw()">
     <img class="btnimg" src="https://raw.githubusercontent.com/avral/alcor-ui/master/assets/logos/wax.svg" alt="" />
     WAX Cloud Wallet
@@ -59,16 +60,10 @@
     <img class="btnimg2" src="https://raw.githubusercontent.com/avral/alcor-ui/master/assets/logos/anchor.svg" alt="" />
     Anchor
 </button>
-
+</div>
 </div>
 
 </div> <!-- end walletmenu -->
-
- <br>
- <br>
-
- <div id='accountname' class='myaccountname' style='align:center;font-size:2em;color:#ffffff;font-weight:bold;'>...</div>
-
 
 <br>
 <div style='text-align:center;'>
@@ -124,12 +119,10 @@ var user    = "";
 function setaccountname( name )
 {
 document.getElementById('accountname').innerHTML = ""+name+"";
+document.getElementById('accountname').style.visibility = "visible";
  
-document.getElementById('walletmenu_anchor').style.visibility = "hidden";
-document.getElementById('walletmenu_anchor').style.height = "0px";
-
-document.getElementById('walletmenu_scatter').style.visibility = "hidden";
-document.getElementById('walletmenu_scatter').style.height = "0px"; 
+document.getElementById('loginbuttons').style.visibility = "hidden";
+document.getElementById('loginbuttons').style.height = "0px";
 
 document.getElementById('logoutbutton').style.visibility = "visible";
 document.getElementById('logoutbutton').style.height = ""; 
