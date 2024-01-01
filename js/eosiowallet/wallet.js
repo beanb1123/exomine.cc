@@ -220,7 +220,7 @@ scatterdologin();
                              
              console.log(str);                
            // alert(str);
-            document.getElementById('accountname').innerHTML(userAccount);
+   //         document.getElementById('accountname').innerHTML(userAccount);
         } catch (e) {
              
              alert("error " + e.message);
