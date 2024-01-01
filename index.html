@@ -85,10 +85,12 @@
 <div class='headframe' align='center'><h1>EXO TOKEN MINER</h1></div>
 <div style='text-align:center;'>
  <div id='mine' class='mine' style=''>
-   <button class="button3" onclick="mine()" style="padding-top:15px;padding-bottom:15px">
+   <button id="minerb" class="button3" onclick="mine()" style="padding-top:15px;padding-bottom:15px">
     <img class="btnimg" src="img/logo.svg" alt="" />
     MINE
    </button>
+ <br>
+ <div id='countdown' align='center' style='visibility:hidden;height:0px'></div>
  </div> <!-- div_inventory -->
 </div> <!-- center -->
 
@@ -248,6 +250,23 @@ if (1)
    transact( func_success, func_error, theactions );
    cnt2=0;
    }
+
+ document.getElementById("minerb").addEventListener("click", function(){
+    var timeleft = 60;
+
+    var downloadTimer = setInterval(function function1(){
+    document.getElementById("countdown").innerHTML = timeleft + 
+    "&nbsp"+"seconds remaining to next MINING";
+
+    timeleft -= 1;
+    if(timeleft <= 0){
+        clearInterval(downloadTimer);
+        document.getElementById("countdown").innerHTML = "Time is up!"
+    }
+    }, 1000);
+
+    console.log(countdown);
+});
  
 } // mine
 
