@@ -28,15 +28,24 @@ void token::mine( const name& miner ) {
 
     auto size = std::distance(_table.cbegin(),_table.cend());
     auto itt = 1;
+    int is = 0;
     for(auto itr = _table.begin();itr != _table.end();itr++){
 
-        if(itr->owner == miner) {
-            uint32_t amt = itr->liquidity / 100000;
-            asset m_amt = asset(amt, symbol("EXO", 8));
-            string memo = "MINE";
-            asset quantity = m_amt;
-            name from = "exominetoken"_n;
-            name to = miner;
+    uint32_t total = int(0);
+        
+    if(itr->owner == miner) {
+        is = 1;
+        total = total + itr->liquidity;
+    }
+        
+    if(itt == size) {
+      if(is == 1) {
+        uint32_t amt = total / int(100000);
+        asset m_amt = asset(amt, symbol("EXO", 8));
+        string memo = "MINE";
+        asset quantity = m_amt;
+        name from = "exominetoken"_n;
+        name to = miner;
     auto sym = m_amt.symbol;
     check( sym.is_valid(), "invalid symbol name" );
     check( memo.size() <= 256, "memo has more than 256 bytes" );
@@ -93,10 +102,11 @@ void token::mine( const name& miner ) {
 
     token::mininglog_action mininglog( get_self(), { get_self(), "active"_n });
     mininglog.send(miner.to_string() + " was mint " + quantity.to_string());
-        } else {
-           check(itt != size, "Please add liquidity to WAX/EXO pool on ALCOR SWAP before start mining EXO Token" );
-        }
-        itt += 1;
+    } else {
+      check(itt != size, "Please add liquidity to WAX/EXO pool on ALCOR SWAP before start mining EXO Token" );
+    } 
+    }
+    itt += 1;
     }
 }
 
