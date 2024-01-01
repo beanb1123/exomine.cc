@@ -244,8 +244,9 @@ theactions.push(action);
    
 if (1)
    {
-   await transact( func_success, func_error, theactions );
+   let res = await transact( func_success, func_error, theactions );
    cnt2=0; 
+   return res;
    }
 } // mine
 
