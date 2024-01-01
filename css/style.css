@@ -8,11 +8,11 @@ button {
   position: relative;
   padding: 15px 40px;
   text-align: center;
-  background:#ffffff;
+  background-color:#ffffff;
+  border-radius: 12px;
 }
 .btnimg {
   align:left;
-  background:#ffffff;
   width:20%;
   position: absolute;
   left: 6px;
