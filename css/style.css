@@ -23,6 +23,14 @@ button {
   top: 50%;
   transform: translateY(-50%);
 }
+.btnimg2 {
+  align:left;
+  height:10%;
+  position: absolute;
+  left: 23px;
+  top: 50%;
+  transform: translateY(-50%);
+}
 
 
 .bodyclass
