@@ -269,8 +269,11 @@ get_balance_sun();
 <script>
 init_wallets( "membershipfe",setaccountname, logoutall );
 update_thread();
-document.getElementById("minerb").addEventListener("hashchange", function(){
-    var timeleft = 65;
+document.getElementById("minerb").addEventListener("click", async function(){
+
+    await mine();
+
+    var timeleft = 60;
 
     document.getElementById('countdown').style.visibility = "visible";
     document.getElementById('countdown').style.height = "100%";
