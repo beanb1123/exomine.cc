@@ -92,7 +92,7 @@ function init_wallets( _identifier, _func_setaccountname, _func_logout )
 {
 console.log("walletlib: " + walletversion);
 console.log("thenode: "+thenode);
-//identifier = _identifier;
+identifier = _identifier;
 func_setaccountname = _func_setaccountname;
 func_logout         = _func_logout;
 
