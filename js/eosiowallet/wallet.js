@@ -210,8 +210,8 @@ scatterdologin();
         try {
             //if autologged in, this simply returns the userAccount w/no popup
             let userAccount = await wax.login();
-            let pubKeys = wax.pubKeys;
-            let str = 'Account: ' + userAccount + '<br/>Active: ' + pubKeys[0] + '<br/>Owner: ' + pubKeys[1]
+       //     let pubKeys = wax.pubKeys;
+      //      let str = 'Account: ' + userAccount + '<br/>Active: ' + pubKeys[0] + '<br/>Owner: ' + pubKeys[1]
             
              currentwallet = "WCW";
                              func_setaccountname( userAccount );
@@ -220,7 +220,7 @@ scatterdologin();
                              
              console.log(str);                
            // alert(str);
-            document.getElementById('accountname').insertAdjacentHTML(str);
+            document.getElementById('accountname').innerHTML(userAccount);
         } catch (e) {
              
              alert("error " + e.message);
