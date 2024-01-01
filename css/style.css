@@ -9,6 +9,7 @@ button {
   width: 100%;
   padding: 15px 40px;
   font-size: 50px;
+  font-weight: bold;
   text-align: right;
   background-image: linear-gradient(aqua, blue);
   color:black;
