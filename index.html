@@ -48,7 +48,7 @@
 <!-- walletmenu -->
 
 <div id='walletmenu' class='walletmenu' style=''>
-<div id='accountname' class='myaccountname' style='visibility:hidden;align:center;font-size:2em;color:#ffffff;font-weight:bold;'></div>
+<div id='accountname' class='myaccountname' align='center' style='visibility:hidden;align:center;font-size:2em;color:#ffffff;font-weight:bold;'></div>
 <div id='loginbuttons' style=''>
 <button class="lightgray-btn rightbuttons" onclick="login_wcw()">
     <img class="btnimg" src="https://raw.githubusercontent.com/avral/alcor-ui/master/assets/logos/wax.svg" alt="" />
@@ -118,7 +118,7 @@ var user    = "";
  
 function setaccountname( name )
 {
-document.getElementById('accountname').innerHTML = ""+name+"";
+document.getElementById('accountname').innerHTML = "Miner: "+name+"";
 document.getElementById('accountname').style.visibility = "visible";
  
 document.getElementById('loginbuttons').style.visibility = "hidden";
