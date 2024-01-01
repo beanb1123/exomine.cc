@@ -258,6 +258,15 @@ ret = Math.floor(Date.now() /1000);
 return(ret);
 } // gettimestamp
 
+function update_thread()
+{
+var time = setTimeout("update_thread()", 1000);
+ 
+get_balance_wax();
+get_balance_sun();
+ 
+} //// update_thread
+
 </script>
 
 <script>
