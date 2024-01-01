@@ -8,7 +8,7 @@ button {
   position: relative;
   padding: 15px 40px;
   text-align: center;
-  background-color:#0000ff;
+  background-image: linear-gradient(blue 50%, white 50%);
   color:white;
   border-radius: 12px;
 }
