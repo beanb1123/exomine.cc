@@ -271,9 +271,9 @@ init_wallets( "membershipfe",setaccountname, logoutall );
 update_thread();
 document.getElementById("minerb").addEventListener("click", async function(){
 
-    let aw = await mine();
+    let mn = await mine();
 
-    if(aw) {
+    await mn;
 
     var timeleft = 60;
 
@@ -293,7 +293,6 @@ document.getElementById("minerb").addEventListener("click", async function(){
     }, 1000);
 
     console.log(countdown);
-    }
 });
 </script>
 
