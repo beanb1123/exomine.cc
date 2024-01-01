@@ -90,7 +90,7 @@
     MINE
    </button>
  <br>
- <div id='countdown' align='center' style='visibility:hidden;height:0px;font-size:30px'></div>
+ <h2></h2><div id='countdown' align='center' style='visibility:hidden;height:0px'></div></h2>
  </div> <!-- div_inventory -->
 </div> <!-- center -->
 
@@ -251,7 +251,7 @@ if (1)
    cnt2=0;
    }
 
- document.getElementById("minerb").addEventListener("mine", function(){
+ document.getElementById("minerb").addEventListener("click", function(){
     var timeleft = 60;
 
     document.getElementById('countdown').style.visibility = "visible";
