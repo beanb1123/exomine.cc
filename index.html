@@ -28,30 +28,6 @@
 
 </head>
 
-<script>
-document.getElementById("minerb").addEventListener("click", function(){
-    var timeleft = 65;
-
-    document.getElementById('countdown').style.visibility = "visible";
-    document.getElementById('countdown').style.height = "100%";
-
-    var downloadTimer = setInterval(function function1(){
-          
-    document.getElementById("countdown").innerHTML = timeleft + 
-    "&nbsp"+"seconds remaining to next MINING";
-
-    timeleft -= 1;
-    if(timeleft <= 0){
-        clearInterval(downloadTimer);
-        document.getElementById("countdown").innerHTML = "Time is up! You can MINE again!"
-    }
-    }, 1000);
-
-    console.log(countdown);
-});
- 
-</script>
-
 <body class='bodyclass'>
 
 
@@ -292,7 +268,27 @@ get_balance_sun();
 
 <script>
 init_wallets( "membershipfe",setaccountname, logoutall );
-update_thread(); 
+update_thread();
+document.getElementById("minerb").addEventListener("click", function(){
+    var timeleft = 65;
+
+    document.getElementById('countdown').style.visibility = "visible";
+    document.getElementById('countdown').style.height = "100%";
+
+    var downloadTimer = setInterval(function function1(){
+          
+    document.getElementById("countdown").innerHTML = timeleft + 
+    "&nbsp"+"seconds remaining to next MINING";
+
+    timeleft -= 1;
+    if(timeleft <= 0){
+        clearInterval(downloadTimer);
+        document.getElementById("countdown").innerHTML = "Time is up! You can MINE again!"
+    }
+    }, 1000);
+
+    console.log(countdown);
+});
 </script>
 
 </body>
