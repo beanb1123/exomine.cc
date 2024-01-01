@@ -93,10 +93,10 @@
 <br>
 <br>
 
-<div class='headframe' align='center'><h1>EXO TOKEN MINER</h1></div>
+<div class='headframe' align='center'><h1>ADD LIQUIDITY TO "EXO/WAX" ALCOR POOL</h1></div>
 <div style='text-align:center;'>
  <div id='mine' class='mine' style=''>
-   <button class="button3" onclick="mine()" style="padding-top:15px;padding-bottom:15px">
+   <button class="button3" onclick="addliquidity()" style="padding-top:15px;padding-bottom:15px">
     <img class="btnimg" src="https://raw.githubusercontent.com/avral/alcor-ui/master/assets/logos/alcorblack.svg" alt="" />
     ADD LIQUIDITY
    </button>
@@ -217,6 +217,11 @@ getdata(callback_render_balance2, "exominetoken", global_account, "accounts", ""
 }
 // get_balance_sun
 
+function addliquidity() {
+
+  window.open("https://alcor.exchange/positions/new?right=wax-eosio.token&left=exo-exominetoken", '_blank').focus();
+
+}
 
 function mine( miner )
 {
