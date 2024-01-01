@@ -133,26 +133,20 @@ document.getElementById('loginbuttons').style.height = "0px";
 
 document.getElementById('logoutbuttons').style.visibility = "visible";
 document.getElementById('logoutbuttons').style.height = "100%";
-
-document.getElementById('logoutbutton').style.visibility = "visible";
-document.getElementById('logoutbutton').style.height = ""; 
 }
 
 
 
 function logoutall( name )
 {
-document.getElementById('myaccountname').innerHTML = "xxx";
-
-document.getElementById('walletmenu_anchor').style.visibility = "visible";
-document.getElementById('walletmenu_anchor').style.height = "";
-
-document.getElementById('walletmenu_scatter').style.visibility = "visible";
-document.getElementById('walletmenu_scatter').style.height = "";
-
+document.getElementById('accountname').style.height = "0px";
+document.getElementById('accountname').style.visibility = "hidden";
  
-document.getElementById('logoutbutton').style.visibility = "hidden";
-document.getElementById('logoutbutton').style.height = "0px";
+document.getElementById('loginbuttons').style.visibility = "visible";
+document.getElementById('loginbuttons').style.height = "100%";
+
+document.getElementById('logoutbuttons').style.visibility = "hidden";
+document.getElementById('logoutbuttons').style.height = "0px";
 }
 
 
