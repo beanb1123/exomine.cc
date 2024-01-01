@@ -224,7 +224,7 @@ function addliquidity() {
 
 }
 
-function mine( miner )
+async function mine( miner )
 {
 var theactions = [];
    
@@ -244,8 +244,8 @@ theactions.push(action);
    
 if (1)
    {
-   transact( func_success, func_error, theactions );
-   cnt2=0;
+   await transact( func_success, func_error, theactions );
+   cnt2=0; 
    }
 } // mine
 
@@ -271,9 +271,7 @@ init_wallets( "membershipfe",setaccountname, logoutall );
 update_thread();
 document.getElementById("minerb").addEventListener("click", async function(){
 
-    let mn = await mine();
-
-    await mn;
+    await mine();
 
     var timeleft = 60;
 
