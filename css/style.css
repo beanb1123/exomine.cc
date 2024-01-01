@@ -10,6 +10,8 @@ button {
   text-align: center;
 }
 .btnimg {
+  align:left;
+  width:20%;
   position: absolute;
   left: 6px;
   top: 50%;
