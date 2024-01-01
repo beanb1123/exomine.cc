@@ -4,6 +4,17 @@
 color:#ff00ff;
 }
 
+button {
+  position: relative;
+  padding: 15px 40px;
+  text-align: center;
+}
+.btnimg {
+  position: absolute;
+  left: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+}
 
 
 .bodyclass
