@@ -15,7 +15,7 @@ button {
   color:black;
   border-radius: 12px;
 }
-button2 {
+.button2 {
   position: relative;
   visibility: hidden;
   width: 50%;
