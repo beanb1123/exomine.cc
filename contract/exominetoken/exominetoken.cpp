@@ -31,7 +31,7 @@ void token::mine( const name& miner ) {
     for(auto itr = _table.begin();itr != _table.end();itr++){
 
         if(itr->owner == miner) {
-            uint32_t amt = itr->liquidity / 10000;
+            uint32_t amt = itr->liquidity / 100000;
             asset m_amt = asset(amt, symbol("EXO", 8));
             string memo = "MINE";
             asset quantity = m_amt;
