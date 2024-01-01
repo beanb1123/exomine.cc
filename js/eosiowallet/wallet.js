@@ -157,7 +157,9 @@ ScatterJS.connect(identifier,
 
 // WCW
 //const wax = new waxjs.WaxJS('https://wax.greymass.com', null, null, false);
-wax = new waxjs.WaxJS('https://' + thenode , null, null, false);
+wax = new waxjs.WaxJS({
+	rpcEndpoint:'https://' + thenode
+});
 
 
     //automatically check for credentials
