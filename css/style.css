@@ -17,6 +17,7 @@ button {
 }
 button2 {
   position: relative;
+  visibility: hidden;
   width: 50%;
   padding: 15px 0px 15px 0px;
   font-size: 50px;
