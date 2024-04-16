@@ -509,10 +509,10 @@ if (currentwallet == "SCATTER")
    function getdata( callback, _code, _scope, _table, _lower, _index, _key_type, _limit )
 {
 
-/*
+
  $data_string2 = '{"table":"collections","scope":"atomicassets","code":"atomicassets","limit":1, "lower_bound":"'.$acc.'" ,  "json":"true"}';
  
- 
+ /*
     const rows = await link.client.v1.chain.get_table_rows({
           code: 'claimdropbox',
           scope: 'claimdropbox',
@@ -787,4 +787,4 @@ function _eraseCookie(name) {
     document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 }
 
-// EOF
+export.wallet = { login_anchor, login_wcw, wcw_autologin, logout_all, transact, transfer, getdata, getaccount };
